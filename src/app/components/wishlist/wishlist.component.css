@@ -1,0 +1,45 @@
+/*
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+img {
+  margin-right: 10px;
+  border-radius: 5px;
+} */
+.box{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.container{
+  width: 1000px;
+}
+.card-2{
+  width: 900px;
+}
+
+#heart:hover{
+width: 100px;
+  color: rgb(188, 83, 83);
+
+}
+
+.heart{
+  background-color: antiquewhite;
+  width: 1000px;
+  height: 600px;
+  text-align: center;
+  margin-left:0px;
+}

@@ -1,0 +1,18 @@
+.box{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.container{
+  width: 1000px;
+}
+.card-2{
+  width: 1200px;
+  margin-left: -100px;
+}
+.heart{
+  width: 800px;
+  height: 500px;
+  margin-left: 150px;
+}

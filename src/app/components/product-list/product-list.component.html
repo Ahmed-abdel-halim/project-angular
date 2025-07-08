@@ -1,0 +1,17 @@
+
+<section class="container">
+  <h3 class="text-center mt-5 font-monospace">Welcome to MyStore</h3>
+@if(products && products.length > 0){
+  <div class="row" >
+    @for(product of products;track product){
+    <div class="col-3 mb-4" >
+      <app-product [product]="product"></app-product>
+    </div>}
+  </div>}
+  @else{
+        <p class="text-center">No products found.</p>
+
+  }
+
+
+</section>

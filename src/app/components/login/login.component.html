@@ -1,0 +1,47 @@
+<div class="login-form">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h3>User Login</h3>
+        <div class="inputBox">
+            <span class="fas fa-envelope"></span>
+            <input type="email" formControlName="email" placeholder="Enter your email" id="email"/>
+        </div>
+  @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+        <div class="error-message">
+          @if (loginForm.get('email')?.errors?.['required']) {
+            Email is required
+          }
+          @if (loginForm.get('email')?.errors?.['email']) {
+            Please enter a valid email
+          }
+        </div>
+      }        <div class="inputBox">
+            <span class="fas fa-lock"></span>
+            <input type="password" formControlName="password" placeholder="Enter your password" id="password"/>
+        </div>
+ @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+        <div class="error-message">
+          @if (loginForm.get('password')?.errors?.['required']) {
+            Password is required
+          }
+          @if (loginForm.get('password')?.errors?.['minlength']) {
+            Password must be at least 6 characters
+          }
+        </div>
+      }
+        @if (errorMessage) {
+      <div class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+    }
+      <button type="submit" value="Sign In"[disabled]="loginForm.invalid|| loading" class="btn">
+          @if (loading) {
+        <span>Logging in...</span>
+      } @else {
+        <span>Login</span>
+      }
+        </button>
+
+
+      <a routerLink="/register" class="btn">Create an Account</a>
+    </form>
+</div>

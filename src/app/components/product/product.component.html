@@ -1,0 +1,41 @@
+<div class="product-card card p-3 d-flex flex-column justify-content-around">
+  <a (click)="showdetails(product.id)" class="w-100">
+    <!-- [routerLink]="['/showdetails', product.id]" -->
+    <img [src]="product.image_url" alt="Product Image" class="card-img mb-2" />
+    <p [class]="stockClass" id="stock">{{ stockStatus }}</p>
+  </a>
+
+  <div class="card-body">
+    <h5 class="card-title text-black">{{ product.name }}</h5>
+    <p class="card-text text-black">{{ product.price | currency : "EGP" }}</p>
+    <div class="rating">
+      @for (star of [1, 2, 3, 4, 5]; track star) {
+      <i
+        class="bi bg"
+        [ngClass]="{
+          'bi-star-fill text-warning': star <= Math.round(product.rating),
+          'bi-star': star > Math.round(product.rating)
+        }"
+      >
+      </i>
+      }
+      {{ product.rating }}
+    </div>
+  </div>
+    <button [routerLink]="['/showdetails', product.id]" class="btn w-100 bg-warning bg-opacity-50 ">showDetails</button>
+  <div class="btn-group mt-auto" role="group">
+    <button
+      class="btn w-100 border-1 btn-outline-dark border-dark-subtle mt-1"
+      (click)="addToCart(product)"
+    >
+      <i class="bi bi-cart-check-fill action"></i>
+    </button>
+
+    <button
+      class="btn w-100 border-1 btn-outline-dark border-dark-subtle mt-1"
+      (click)="addToWishlist()"
+    >
+      <i class="bi bi-heart-fill action"></i>
+    </button>
+  </div>
+</div>

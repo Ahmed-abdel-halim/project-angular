@@ -1,0 +1,21 @@
+/* todo-wrapper.component.css */
+.todo-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  border: 2px solid red;
+  border-radius: 8px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #888;
+  font-size: 0.9em;
+}

@@ -1,0 +1,141 @@
+<div class="container-fluid">
+  <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
+    <div class="col-lg-3">
+      <a href="" class="text-decoration-none">
+        <span class="h1 text-uppercase text-primary bg-dark px-2">My</span>
+        <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1"
+          >Store</span
+        >
+      </a>
+    </div>
+
+    <div class="col-lg-5 col-6 text-left">
+      <form (submit)="onSearch(); $event.preventDefault()">
+        <div class="input-group">
+          <input
+            type="text"
+            [(ngModel)]="searchTerm"
+            name="searchTerm"
+            placeholder="Search for products"
+            class="form-control"
+          />
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-primary btns">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-2">
+      <form (ngSubmit)="applyFilters()">
+        <!-- Filter by category -->
+        <select class="filter" [(ngModel)]="selectedCategoryId" name="category">
+          <option value="">All Categories</option>
+          @for(category of categories;track category){
+          <option [value]="category.id">
+            {{ category.name }}
+          </option>
+          }
+        </select>
+
+        <button class="filterbtn bg-warning p-2" type="submit">Filter</button>
+      </form>
+    </div>
+
+    <div class="col-lg-2 col-6 text-right">
+      <div class="navbar-auth text-right" *ngIf="isLoggedIn(); else guestLinks">
+        <span class="text-dark"
+          ><i class="bi bi-person-circle"></i> {{ username }}</span
+        >
+        <button (click)="logout()" class="btn btn-sm btn-danger ml-2">
+          Logout
+        </button>
+      </div>
+      <ng-template #guestLinks>
+        <div class="navbar-auth text-right">
+          <a routerLink="/login" routerLinkActive="activeLink" class="login"
+            >Login</a
+          >
+          <a
+            routerLink="/register"
+            routerLinkActive="activeLink"
+            class="auth-button signup"
+            >Signup</a
+          >
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid bg-dark mb-30">
+  <div class="row px-xl-5">
+    <div class="col-lg-12">
+      <nav
+        class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0"
+      >
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-between"
+          id="navbarCollapse"
+        >
+          <div class="navbar-nav mr-auto py-0">
+            <a
+              routerLink="/home"
+              class="nav-item nav-link"
+              routerLinkActive="activeLink"
+              >Home</a
+            >
+            <a
+              routerLink="/cart"
+              routerLinkActive="activeLink"
+              class="btn nav-link active"
+              >Shop</a
+            >
+            <a
+              routerLink="/about"
+              routerLinkActive="activeLink"
+              class="btn nav-item nav-link"
+              >About</a
+            >
+            <a
+              routerLink="/contact"
+              routerLinkActive="activeLink"
+              class="nav-item nav-link"
+              >Contact</a
+            >
+          </div>
+
+          <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
+            <a routerLink="/wishlist" class="btn px-0">
+              <i class="bi bi-heart-fill text-primary"></i>
+              <span
+                class="badge text-secondary border border-secondary rounded-circle"
+                style="padding-bottom: 2px"
+              >
+                {{ wishlist.length }}
+              </span>
+            </a>
+            <a routerLink="/cart" class="btn px-0 ml-3">
+              <i class="bi bi-cart-fill text-primary"></i>
+              <span
+                class="badge text-secondary border border-secondary rounded-circle"
+                style="padding-bottom: 2px"
+                >{{ cartItemList.length }}</span
+              >
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>

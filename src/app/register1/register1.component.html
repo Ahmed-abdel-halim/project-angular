@@ -1,0 +1,118 @@
+<!--
+<div class="signup-container">
+  <h2>Sign Up</h2>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" formControlName="name" class="form-control">
+
+      @if (signupForm.get('name')?.invalid && signupForm.get('name')?.touched) {
+        <div class="error-message">
+          Name is required
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" class="form-control">
+
+      @if (signupForm.get('email')?.invalid && signupForm.get('email')?.touched) {
+        <div class="error-message">
+          @if (signupForm.get('email')?.errors?.['required']) {
+            Email is required
+          }
+          @if (signupForm.get('email')?.errors?.['email']) {
+            Please enter a valid email
+          }
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" class="form-control">
+
+      @if (signupForm.get('password')?.invalid && signupForm.get('password')?.touched) {
+        <div class="error-message">
+          @if (signupForm.get('password')?.errors?.['required']) {
+            Password is required
+          }
+          @if (signupForm.get('password')?.errors?.['minlength']) {
+            Password must be at least 6 characters
+          }
+        </div>
+      }
+    </div>
+
+    @if (errorMessage) {
+      <div class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+    }
+
+    <button type="submit" class="btn btn-primary my-3" [disabled]="signupForm.invalid">Sign Up</button>
+  </form>
+
+  <p class="signup-link">
+    Already have an account?
+      <button class="btn">
+          <a routerLink="/login">login</a>
+</button>
+
+  </p>
+</div> -->
+<section class="register-form">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <h3>Register Now</h3>
+
+        <div class="inputBox">
+            <span class="fas fa-user"></span>
+            <input type="text" formControlName="name" placeholder="Enter User name" id="username" />
+        </div>
+
+      @if (signupForm.get('name')?.invalid && signupForm.get('name')?.touched) {
+        <div class="text-danger">
+          Name is required
+        </div>
+      }
+        <div class="inputBox">
+            <span class="fas fa-envelope"></span>
+            <input type="email" formControlName="email" placeholder="Enter your email" id="email" />
+        </div>
+
+      @if (signupForm.get('email')?.invalid && signupForm.get('email')?.touched) {
+        <div class="text-danger">
+          @if (signupForm.get('email')?.errors?.['required']) {
+            Email is required
+          }
+          @if (signupForm.get('email')?.errors?.['email']) {
+            Please enter a valid email
+          }
+        </div>
+      }
+      <div class="inputBox">
+        <span class="fas fa-lock"></span>
+        <input type="password" formControlName="password" placeholder="Enter your password" id="password" />
+        </div>
+  @if (signupForm.get('password')?.invalid && signupForm.get('password')?.touched) {
+        <div class="text-danger">
+          @if (signupForm.get('password')?.errors?.['required']) {
+            Password is required
+          }
+          @if (signupForm.get('password')?.errors?.['minlength']) {
+            Password must be at least 6 characters
+          }
+        </div>
+      }
+
+            @if (errorMessage) {
+      <div class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+    }
+        <div id="userTypeError" class="error"></div>
+        <input type="submit" [disabled]="signupForm.invalid" value="Sign Up" class="btn" />
+        <a routerLink="/login" class="btn">Already have an account</a>
+    </form>
+</section>

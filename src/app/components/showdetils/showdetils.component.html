@@ -1,0 +1,79 @@
+<section class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="imges">
+        <div class="imgetop">
+          <img
+            calss="card-img-top  "
+            [src]="selectedProduct?.image_url"
+            alt="{{ selectedProduct?.name}}"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="mx-5 box">
+        <h2 class="card-title">{{ selectedProduct?.name }}</h2>
+        <p class="card-text">{{ selectedProduct?.description }}</p>
+        <hr>
+        <div class="rating mb-2">
+<div class="rating mb-2">
+  @for (star of [1, 2, 3, 4, 5];track star) {
+    <i
+      class="bi text-warning"
+      [ngClass]="{
+        'bi-star-fill': star <= (selectedProduct?.rating ?? 0),
+        'bi-star': star > (selectedProduct?.rating ?? 0)
+      }">
+    </i>
+  }
+  {{ selectedProduct?.rating }}
+</div>          <p class="card-text">
+            <strong>Price:</strong> ${{ selectedProduct?.price }}
+          </p>
+          <hr>
+          <p class="card-text">
+            <strong>brand:</strong> {{ selectedProduct?.brand }}
+          </p>
+          <p class="card-text">
+            <strong>Category:</strong> {{ selectedProduct?.category_name }}
+          </p>
+          <hr>
+          <div class="d-flex justify-content-start align-items-center">
+          <h5>discount :
+          </h5>
+          <p [class]="stockClass" id="stock"> {{ stockStatus }}</p>
+          </div>
+<hr>
+@if(reviews && reviews.length > 0){
+<div >
+  <h3>Reviews</h3>
+  <ul>
+    @for( review of reviews;track review ){
+    <li >
+      <strong>{{ review.user_name }}</strong> — Rating: {{ review.rating }}/5
+      <p>{{ review.comment }}</p>
+    </li>}
+  </ul>
+</div>
+}@else{
+  <p class="bg-warning-subtle">No reviews yet.</p>
+}
+            <div class="btn-group mt-auto" role="group">
+          <button
+            class="btn w-100 border-1 btn-outline-dark border-dark-subtle mt-1"
+
+            (click)="addToCartFromHome(selectedProduct)"
+          >
+            <i class="bi bi-cart-check-fill  action"></i>
+
+          </button>
+
+
+            <button  (click)="addToWishlistFromHome(selectedProduct)"  class="btn w-100 border-1 btn-outline-dark border-dark-subtle  mt-1"><i class="bi bi-heart-fill action"></i></button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
